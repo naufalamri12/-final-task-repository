@@ -30,23 +30,6 @@ sudo adduser finaltask-$USER
 ```
 
 Or using Ansible by creating a YAML playbook.
-
-Example:
-
-```yaml
-- name: Create Final Task User
-  hosts: all
-  become: true
-
-  tasks:
-    - name: Create final task user
-      ansible.builtin.user:
-        name: "finaltask-{{ ansible_user_id }}"
-        shell: /bin/bash
-        groups: sudo
-        append: true
-```
-
 ### 2. SSH Key Authentication
 
 Generate one SSH key that will be used for all purposes:
@@ -109,31 +92,6 @@ nano ~/.ssh/config
 
 Example:
 
-```text
-Host staging-frontend
-    HostName <STAGING_FRONTEND_IP>
-    User finaltask-$USER
-    Port 3333
-    IdentityFile ~/.ssh/id_ed25519
-
-Host staging-backend
-    HostName <STAGING_BACKEND_IP>
-    User finaltask-$USER
-    Port 3333
-    IdentityFile ~/.ssh/id_ed25519
-
-Host production-frontend
-    HostName <PRODUCTION_FRONTEND_IP>
-    User finaltask-$USER
-    Port 3333
-    IdentityFile ~/.ssh/id_ed25519
-
-Host production-backend
-    HostName <PRODUCTION_BACKEND_IP>
-    User finaltask-$USER
-    Port 3333
-    IdentityFile ~/.ssh/id_ed25519
-```
 
 Set the correct permission:
 
